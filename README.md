@@ -10,8 +10,9 @@ This repository has multiple tags that relate to Almalinux versions.
 
 |Rockylinux Version|Docker image tag|
 |------------------|-------------------|
-|8                 |8                  |
-|latest (9)        |9, latest          |
+| 8                | 8                 |
+| 9                | 9                 |
+| 10               | 10, latest        |
 
 Manually starting
 -----------------
