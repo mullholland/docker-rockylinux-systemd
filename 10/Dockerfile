@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9
+FROM rockylinux/rockylinux:10
 
 LABEL maintainer="mullholland"
 LABEL build_date="2025-07-02"
