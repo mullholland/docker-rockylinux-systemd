@@ -29,7 +29,18 @@ RUN yum -y install rpm dnf-plugins-core initscripts \
       iproute \
       python3 \
       python3-pip \
+      python3.11 \
+      python3.11-pip \
  && yum clean all
+
+# EL8's default python3 (3.6) can't run current ansible-core's AnsiballZ
+# wrapper ("SyntaxError: future feature annotations is not defined").
+# python3.11 is available in AppStream; switch the python3 alternative to
+# it so ansible's interpreter auto-discovery picks it up without any
+# per-role changes.
+RUN alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 20 \
+ && alternatives --set python3 /usr/bin/python3.11 \
+ && python3.11 -m pip install packaging
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
